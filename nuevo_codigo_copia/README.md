@@ -98,7 +98,7 @@ ALERTA: si els arxius amb extensió .png i .kml ja existeixen, es sobreescriuran
 Quan executem aquesta linia de codi, i si tot va bé, la terminal ens començarà a indicar que està descarregant dades. Haurem d'esperar una minuts, temps que depèn de les característiques del nostre ordinador i de la qualitat de la connexió a internet. Aquest procés es pot interrompre tancant el programa, i en tornar a executar la linia de codi, seguirà descarregant per on es va quedar.
 
 En acabar, veurem 2 arxius nous.
-- El mapa:
+- El mapa ja simplificat:
 ![alt text](costa_selva.png "Mapa simplified")
 
 ### [REFER LA FOTO AMB SIMPLIFY GRAPH]
@@ -114,7 +114,7 @@ quick_routes ...
 I ara sí: el codi sencer:
 
 `# tutorial1.py
-
+'''python
 """ 
 Programa per mapejar una zona al voltant de 
 les ciutats costeres de la comarca de la Selva.
@@ -126,7 +126,8 @@ box_costa_selva = Box(Point(41.6578, 2.7734), Point(41.7411, 2.9481))
 
 preview_box("preview-costa_selva.png", box_costa_selva)
 
-quick_paths("costa_selva", box_costa_selva)`
+quick_paths("costa_selva", box_costa_selva)
+
 
 ### [FER QUE ES VEGI COM CODI]
 
