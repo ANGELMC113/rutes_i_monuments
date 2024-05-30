@@ -218,7 +218,7 @@ El programa s'ha separat en diferents mòduls. Primerament explicarem com funcio
 
 El programa consta de 8 mòduls: generics, segments, map_drawing, clustering, graphmaker, monuments, routes i rutes_i_monuments.
 
-Generics conté una funció que utilitzen diversos mòduls. segments proporciona les funcions per descarregar i fer servir les dades de OpenStreetMap, map_drawing conté tot allò relacionat amb la creació d'imatges i fitxers kml, clustering s'encarrega del cluster amb K-Means, graphmaker permet generar grafs, monuments permet descarregar i carregar els monumenents, routes permet simplificar els grafs per trobar rutes i, per últim, rutes_i_monuments ajunta totes les funcions públiques i defineix unes noves que serveixen per simplificar l'ús del programa.
+Generics conté una funció que utilitzen diversos mòduls. segments proporciona les funcions per descarregar i fer servir les dades de OpenStreetMap, map_drawing conté tot allò relacionat amb la creació d'imatges i fitxers kml, clustering s'encarrega del cluster amb K-Means, graphmaker permet generar grafs i simplificar-los, monuments permet descarregar i carregar els monumenents, routes permet simplificar els grafs per trobar rutes i, per últim, rutes_i_monuments ajunta totes les funcions públiques i defineix unes noves que serveixen per simplificar l'ús del programa.
 
 ...
 cluster no és una funció pensada per ser usada per l'usuari, ja que, a la pràctica, fer el graf és més simple d'entendre, alhora que més útil, i en essència per l'usuari seran el mateix. Bàsicament, l'usuari ha de fer dirèctament el graf sense demanar res a clustering.
@@ -230,15 +230,15 @@ cluster no és una funció pensada per ser usada per l'usuari, ja que, a la prà
 
 #### Funció get_segments() i arxius .txt
 
-Descàrregar els segments és bastant lent. Segons la mida de la Box, les característiques de l'ordinador on executem el programa i la qualitat de la coneexió a internet, pot arribar a trigar més de mitja hora. Convé destacar que el programa està pensar per calcular rutes per anar a peu per senderistes, que normalment no seran massa llargues. No està pensat per agafar àrees de vàries desenes de kilòmetres de diagonal. Per tant, encara que aquest temps no es dispararà encara que tinguem una connexió inestable, si que és cert que descarregar les dades és un procés que s'ha de fer un sol cop.
+Descàrregar els segments és bastant lent. Segons la mida de la Box, les característiques de l'ordinador on executem el programa i la qualitat de la coneexió a internet, pot arribar a trigar més de mitja hora. Convé destacar que el programa està pensar per calcular rutes per anar a peu per senderistes, que normalment no seran massa llargues. No està pensat per agafar àrees de vàries desenes de kilòmetres de diagonal. Per tant, malgrat que aquest temps no es dispararà encara tenint una connexió inestable, sí que és cert que descarregar les dades és un procés que s'ha de fer un sol cop.
 
 ### [DE VERITAT LA CONNEXIÓ AFECTA? TESTEJAR MATEIXA BOX AMB DIFERENT INTERNET I DIFERENT ORDINADOR (4 SITUACIONS)]
 
 Per aquest motiu, els documents on es desen les dades, els .dat, estan protegits. El programa està pensat per que l'usuari pugui identificar a quina àrea pertanyen els documents, fent servir la funció read_header, o accedint al document que tindrà el mateix nom que el .dat, però acabarà en .txt (a aquest l'hem anomenat header).
 
-Aquest arxiu a part té diverses utilitats que ajuden a l'usuari a no perdre el control de les dades. Desen 3 coses: les coordenades de la Box (en format longitud, latitud), un booleà que indica si s'han acabat de descarregar les dades de OpenStreetMap, i un natural que indica la última pàgina descarregada.
+Aquest arxiu a part té diverses utilitats que ajuden a l'usuari a no perdre el control de les dades. Desen 3 coses: les coordenades de la Box (en format longitud, latitud), un booleà que indica si s'han acabat de descarregar les dades de OpenStreetMap i un natural que indica la última pàgina descarregada.
 
-Això, en conjunt, permet diverses comprovacions. D'una banda, si l'usuari fa un get_segments() (on un paràmetre sense haurà de ser un arxiu .dat), el programa mai hauria de sobreescriure les dades si aquest arxiu ja existeix. Es poden donar diferents casuístiques segons els paràmetres que pasem:
+Això, en conjunt, permet diverses comprovacions. D'una banda, si l'usuari fa un get_segments() (on un paràmetre sempre haurà de ser un arxiu .dat), el programa mai hauria de sobreescriure les dades si aquest arxiu ja existeix. Es poden donar diferents casuístiques segons els paràmetres que pasem:
 
 - Donem un "filename" que no existeix i no donem "Box": salta error perquè no es pot saber què volem descarregar.
 - Donem un "filename" que no existeix i sí donem una "Box": el programa genera un nou arxiu .dat, que a partir d'ara serà excliusiu per aquesta Box. Segueix el procés de descarregar i carregar les dades.
@@ -250,9 +250,9 @@ D'aquesta manera, no permetem que un arxiu .dat contingui dades de caixes difere
 
 A més a més: fixeu-vos que la descàrrega / càrrega de dades és automàtica. get_segments() sempre mirarà si el booleà del .txt està a True, i si no és així, cridarà a la funció per descarregar dades des de la següent pàgina a la última que van descàrregar (que també tenim al .txt).
 
-Això ens permet parar la descarrega i seguir-la després, cosa que fa el programa resistent a situacions on es pugui perdre la connexió a internet. Però, per tal que això funcioni, és important que l'arxiu .dat es vagi escrivint a poc a poc. És per això que _download_segments() fa, pàgina a pàgina de les dades de OpenStreetMap, el següent procés: descarregar la pàgina, ordenar els segments segons temps, eliminar els que tenen "temps negatiu" (més avall s'entra en detalls), apuntar els segments al .dat, i per últim actualitzar el .txt amb el nombre d'aquesta pàgina. És quan no queden elements per descarregar que hem arribat a la última pàgina i per tant, hem acabat, i s'estableix el booleà del .txt a True.
+Això ens permet parar la descarrega i seguir-la després, cosa que fa el programa resistent a situacions on es pugui perdre la connexió a internet. Però, per tal que això funcioni, és important que l'arxiu .dat es vagi escrivint a poc a poc. És per això que _download_segments() fa, pàgina a pàgina de les dades de OpenStreetMap, el següent procés: descarregar la pàgina, ordenar els segments segons temps, eliminar els que tenen "temps negatiu" (més avall s'entra en detalls), apuntar els segments al .dat i, per últim, actualitzar el .txt amb el nombre d'aquesta pàgina. És quan no queden elements per descarregar que hem arribat a la última pàgina i per tant, hem acabat i s'estableix el booleà del .txt a True.
 
-Gràcies a la funció open(), podem descarregar una pàgina de les dades, aturar el procés, i en tornar a cridar get_segment() seguirà on es va quedar.
+Gràcies a la funció open() podem descarregar una pàgina de les dades, aturar el procés, i en tornar a cridar get_segment() seguirà on es va quedar.
 
 És important destacar que això no succeeix amb els altres arxius: els mapes i els kmls es sobreescriuen quan demanem fer l'exportació. En conjunt, això permet executar el programa tants cops com volguem, sense haver de descarregar les dades cada cop, i sense generar imatges semblants entre sí.
 
@@ -262,9 +262,9 @@ Les dades descarregades, en mapejar-les, donen resultats diversos: veiem linies 
 
 ### [TESTEAR]
 
-Aquest filtre no suposa una diferència notable en el temps que triga el programa en carregar les dades, i per això no s'ha mogut a la descàrrega. L'avantatge és que podem canviar la distància a comprovar sense haver de tornar a descàrregar res.
+Aquest filtre no suposa una diferència notable en el temps que triga el programa en carregar les dades i per això no s'ha mogut a la descàrrega. L'avantatge és que podem canviar la distància a comprovar sense haver de tornar a descàrregar res.
 
-A part d'aquest filtre, a l'hora de descarregar, s'eliminen els segments on el temps del punt final és anterior al temps del punt inicial (cosa que implica que hi ha algun error).
+A part d'aquest filtre, a l'hora de descarregar s'eliminen els segments on el temps del punt final és anterior al temps del punt inicial (cosa que implica que hi ha algun error).
 
 
 
