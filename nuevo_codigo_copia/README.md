@@ -101,7 +101,7 @@ En acabar, veurem 2 arxius nous.
 - El mapa:
 ![alt text](costa_selva.png "Mapa")
 
-### [REFER AMB SIMPLIFY GRAPH]
+### [REFER LA FOTO AMB SIMPLIFY GRAPH]
 
 - I el kml (que podem importar a Google Earth ... )
 ...
