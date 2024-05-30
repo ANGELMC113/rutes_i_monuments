@@ -114,7 +114,7 @@ quick_routes ...
 I ara sí: el codi sencer:
 
 `# tutorial1.py
-(\'\'\')python
+\'\'\'python
 """ 
 Programa per mapejar una zona al voltant de 
 les ciutats costeres de la comarca de la Selva.
