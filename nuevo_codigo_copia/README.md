@@ -100,7 +100,7 @@ Quan executem aquesta linia de codi, i si tot va bé, la terminal ens començar�
 En acabar, veurem 2 arxius nous.
 - El mapa:
 ![alt text](costa_selva.png "Mapa")
-
+![alt text](costa_selva.png "Mapa simplified")
 ### [REFER LA FOTO AMB SIMPLIFY GRAPH]
 
 - I el kml (que podem importar a Google Earth ... )
