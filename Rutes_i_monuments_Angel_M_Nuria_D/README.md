@@ -2,11 +2,11 @@
 
 Gràcies per descarregar Rutes i Monuments. Aquest projecte és una implementació de la pràctica homònima d'AP2 del GCED. El programa us permet:
 
-- Obtenir les rutes dels senderistes en una regió geogràfica.
-- Inferir un mapa (un graf) a partir de les rutes.
-- Obtenir les coordenades de monuments medievals.
-- Trobar rutes òptimes per arribar a monuments medievals en el graf inferit.
-- Visualitzar els mapes resultants en 2D i 3D. 
+- Obtenir les rutes dels senderistes en una regió geogràfica
+- Inferir un mapa (un graf) a partir de les rutes
+- Obtenir les coordenades de monuments medievals
+- Trobar rutes òptimes per arribar a monuments medievals en el graf inferit
+- Visualitzar els mapes resultants en 2D i 3D 
 
 La informació d'aquest README s'ha distribuït segons el vostre interès pel projecte.
 - Introducció i índex
@@ -18,7 +18,7 @@ La informació d'aquest README s'ha distribuït segons el vostre interès pel pr
 
 Aquí tindreu accés a tota la informació sobre com fer servir l'aplicació: instal·lació, execució i funcionalitats.
 
-Com a pas previ a qualsevol execució de codi des de la terminal, assegureu-vos que us trobeu al directori del projecte, on es troba aquest arxiu README.md, i feu servir la comanda `cd` per arribar-hi (podeu trobar més informació a [Wikipedia](https://en.wikipedia.org/wiki/Cd_(command))).
+Com a pas previ a qualsevol execució de codi des de la terminal, assegureu-vos que us trobeu al directori del projecte, on es troba aquest arxiu README.md i feu servir la comanda `cd` per arribar-hi (podeu trobar més informació a [Wikipedia](https://en.wikipedia.org/wiki/Cd_(command))).
 
 Com a comentari previ, es demana discreció a l'usuari. És difícil assegurar que els mapes quedaran coherents i no hi haurà camins "impossibles". Això és perquè, en el moment que simplifiquem, sempre modifiquem els camins, i no hi ha manera de saber per on pasaran: per sobre de rius, llacs, propietats privades...
 
