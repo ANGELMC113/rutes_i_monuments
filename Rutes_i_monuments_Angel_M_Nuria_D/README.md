@@ -104,7 +104,7 @@ En acabar, veurem 2 arxius nous.
 - El mapa (definit a partir d'un graf i simplificat):
 ![alt text](tuto1-mapa_costa_selva.png "Mapa simplificat: mapa_costa_selva.png")
 
-- I l'arxiu KML, que podem importar a Google Earth desplegant amb la fletxa el menú lateral (a l'esquerra de la pantalla), fent clic a "nou", "arxiu KML local", "importar" i seleccionant el nostre arxiu d'extensió .kml. Aquí teniu el resultat de fer això:
+- I l'arxiu KML, que podem importar a Google Earth desplegant amb la fletxa el menú lateral (a l'esquerra de la pantalla), fent clic a "nou", "arxiu KML local", "importar" i seleccionant el nostre arxiu d'extensió .kml. Aquí teniu el resultat:
 ![alt text](tuto1-kml_mapa_costa_selva.png "KML del mapa: mapa_costa_selva.kml")
 
 Fet això, es poden buscar les rutes a monuments. Es necessita un punt d'inici, que podem aconseguir igual que com s'aconsegueixen les cantonades de la caixa. Llavors, farem servir la comanda següent:
