@@ -374,12 +374,12 @@ Si executem les linies del document anterior en ordre, hauríem de tenir la mate
 Aquests funcions permeten escriure un seguit d'instruccions per descarregar i mapejar les dades. En aquestes, tots els paràmetres que siguin arxius han d'incloure l'extensió corresponent.
 
 ```Python
-def get_segments(filename: str, box: Optional[Box] = None, endpage: int = -1, feedback: bool = True)
+def get_segments(filename: str, box: Optional[Box] = None, endpage: int = -1, feedback: bool = DEFAULT_FEEDBACK)
 ```
 
 Funció per agafar les dades dels segments. filename ha d'incloure l'extensió .dat. Convé establir un valor per endpage només si es pretén fer una prova de les dades i es vol estalviar temps; per tenir precisió és convenient descarregar-les totes. Endpage fa referència a com s'ordenen les dades a la web font.
 
-get_segments protegeix els fitxers .dat de ser sobreescrits. Si estan accessibles, comprovarà que, en cas d'haver donat una caixa com a paràmetre, sigui la caixa que correspon a aquestes dades. En cas contrari, saltarà un error. Si no donem cap caixa, ens retornarà les dades dirèctament. Sempre comprovarà que s'hagin descarregat les dades demanades, i descarregarà les que faltin.
+get_segments protegeix els fitxers .dat de ser sobreescrits. Si estan accessibles, comprovarà que, en cas d'haver donat una caixa com a paràmetre, sigui la caixa que correspon a aquestes dades. En cas contrari, saltarà un error. Si no donem cap caixa, ens retornarà les dades dirèctament. Sempre comprovarà que s'hagin descarregat les dades demanades i descarregarà les que faltin.
 
 L'usuari pot saber a quina box pertany un arxiu .dat. S'ha d'accedir a l'arxiu .json amb el mateix nom i llegir el paràmetre "box_str". Aquest conté els dos punts en format longitud - latitud (la coma al mig separa els dos punts, les altres dos comes separen longitud de latitud a cada punt).
 
@@ -389,7 +389,7 @@ def export_png_map(
         data: Graph | Segments | tuple[Segments, list[Point]],
         colors: dict[str, str] = DEFAULT_COLORS,
         sizes: dict[str, int] = DEFAULT_SIZES,
-        feedback: bool = True
+        feedback: bool = DEFAULT_FEEDBACK
     ) -> None:
 
 def export_kml(
@@ -397,11 +397,11 @@ def export_kml(
         G: Graph, 
         colors: dict[str, str] = DEFAULT_COLORS, 
         sizes: dict[str, int] = DEFAULT_SIZES, 
-        feedback: bool = True
+        feedback: bool = DEFAULT_FEEDBACK
     ) -> None:
 ```
 
-Funcions per exportar mapes en format png i KML. La primera accepta grafs, segments, o una tupla de segments i punts, mentre que la segona només grafs. El paràmetre filename ha d'incloure l'extensió corresponent (.png o .kml). Els dos diccionaris han de contenir totes les següents claus:
+Funcions per exportar mapes en format png i KML. La primera accepta grafs, segments o una tupla de segments i punts; mentre que la segona només grafs. El paràmetre filename ha d'incloure l'extensió corresponent (.png o .kml). Els dos diccionaris han de contenir totes les següents claus:
 
 ```python
 colors: dict[str, str] = {
@@ -422,7 +422,7 @@ sizes: dict[str, int] = {
     "kml_height": 15
 }
 ```
-Aquests són els valors per defecte. Convé no allunyar-s'hi massa, ja que si apliquem una raó de multiplicar per 10 qualsevol valor podem començar a notar problemes. Igualment, si perdem la proporció entre els valors, també pot causar problemes. En qualsevol cas, l'usuari pot experimentar amb modificar els valors, i si el programa sembla congelar-se o salten errors estranys, pot deixar les variables com estaven.
+Aquests són els valors per defecte. Convé no allunyar-s'hi massa, ja que si apliquem una raó de multiplicar per 10 qualsevol valor podem començar a notar problemes. Igualment, si perdem la proporció entre els valors, també pot causar problemes. En qualsevol cas, l'usuari pot experimentar amb modificar els valors i si el programa sembla congelar-se o salten errors estranys, pot deixar les variables com estaven.
 
 Els colors disponibles per fer exportar mapes en PNG són els del mòdul [Pillow](https://stackoverflow.com/questions/54165439/what-are-the-exact-color-names-available-in-pils-imagedraw).
 
@@ -434,7 +434,7 @@ def make_graph(segments: Segments, n_clusters: int = DEFAULT_N_CLUSTERS, simplif
 Funció per generar un graf a partir d'uns segments. Té tres paràmetres opcionals. Un és el nombre de clusters, "n_clusters" (agupacions) que es faran, per defecte són 100. Reduir el nombre farà el mapa més simple, augmentar-lo el farà més precís. Succeeix l'invers amb el paràmetre "epsilon", l'angle per simplificar, que és l'angle mínim que es permetrà entre les 2 úniques arestes de qualsevol node amb dos veïns (serveix per eliminar nodes que no siguin necessaris per connectar camins). De fet, podem no simplificar el graf, establint el paràmetre "simplify" com False.
 
 ```python
-def find_routes(G: Graph, box: Box, start: Point, feedback: bool = True) -> Graph:
+def find_routes(G: Graph, box: Box, start: Point, feedback: bool = DEFAULT_FEEDBACK) -> Graph:
 ```
 
 Funció per reduir un graf a un arbre, on l'arrel és el punt "start" i les fulles seran els nodes als monuments. Tant "start" com cada monument s'aproxima al node més proper. Necessita l'entrada de la caixa on volem buscar els monuments. És important que aquesta caixa sigui similar a la que s'ha fet servir per descarregar els segments i fer el graf, del contrari, podem perdre monuments o trobar monuments que no estan a la caixa.
@@ -454,7 +454,7 @@ def quick_paths(data_filename: str, map_filename: str, box: Box, n_clusters: int
 
 def quick_routes(data_filename: str, map_filename: str, box: Box, start: Point, n_clusters: int = DEFAULT_N_CLUSTERS, feedback: bool = DEFAULT_FEEDBACK) -> None:
 ```
-Generen un png i un KML del graf complet i de l'arbre de les rutes, respectivament. Necessiten el nom del fitxer de les dades, seguit del nom del fitxer per fer ambdós mapes (cap ha de portar extensió). També necessiten la caixa a mapejar i, en el cas de les rutes, un punt d'inici.
+Generen un png i un KML del graf complet i de l'arbre de les rutes respectivament. Necessiten el nom del fitxer de les dades, seguit del nom del fitxer per fer ambdós mapes (cap ha de portar extensió). També necessiten la caixa a mapejar i, en el cas de les rutes, un punt d'inici.
 
 # Informació de desenvolupament
 
@@ -462,7 +462,7 @@ Com de costum, és recomanable tenir un bon nivell d'anglès per programar. A m�
 
 ### Aspectes generals
 
-`feedback: bool` és un paràmetre que trobem al llarg de tot el programa. Sempre fa el mateix, i sempre està per defecte establert a True (o és cridat per altres funcions que passaran el seu estat de feedback). Escriu a la consola de comandes uns misatges que donen una idea a l'usuari sobre què està fent el programa. És recomanable deixar el feedback activat, però des de main.py podem establir `DEFAULT_FEEDBACK` a false i es desactivarà a tot arreu.
+`feedback: bool` és un paràmetre que trobem al llarg de tot el programa. Sempre fa el mateix, i sempre està per defecte establert a True en el mòdul `generics.py`. Escriu a la consola de comandes uns misatges que donen una idea a l'usuari sobre què està fent el programa. És recomanable deixar el feedback activat, però des de main.py podem establir `DEFAULT_FEEDBACK` a false i es desactivarà a tot arreu.
 
 ### Estructura del programa
 
