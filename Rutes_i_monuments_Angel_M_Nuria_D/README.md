@@ -45,8 +45,8 @@ Si esteu acostumats a fer servir eines per a programadors, sabreu com veure el "
 
 Explicarem les funcions al llarg d'un exemple. Trobareu el codi complet al final de d'aquesta explicació.
 
-Com a comentari previ: moltes funcions estan configurades per donar, per defecte, missatges a la consola explicant què està succeïnt. Podem desactivar això escrivint una linia de codi i posant `DEFAULT_FEEDBACK = False`, tot i que no es recomana.
-[COMPROVAR QUE FUNCIONA I QUE NO SURTEN MISSATGES]
+Com a comentari previ: moltes funcions estan configurades per donar, per defecte, missatges a la consola explicant què està succeïnt. Podem desactivar això al mòdul generics.py posant `DEFAULT_FEEDBACK = False`, tot i que no es recomana.
+
 
 ### Funcions principals de rutes_i_monuments.py i exemple d'ús
 
@@ -194,7 +194,7 @@ Ara, es pot fer servir aquestes dades per fer un mapa amb la "densitat" de quant
 
 ![alt text](tuto2-segments_tossa.png "Mapa a partir dels segments: segments_tossa.png")
 
-La imatge generada és un mapa amb camins, alguns més gruixuts que altres, que indiquen per on han pasat dispositius que en generat dades GPX. Dit d'una altra manera, és un mapa que mostra les rutes i com "d'importants" són. Pot ser útil visualment, però per trobar les rutes als monuments necessitarem simplificar-lo.
+La imatge generada és un mapa amb camins, alguns més gruixuts que altres, que indiquen per on han pasat dispositius que en generat dades GPX. Dit d'una altra manera, és un mapa que mostra les rutes i com "d'importants" són. Pot ser útil visualment però per trobar les rutes als monuments, necessitarem simplificar-lo.
 
 #### Definició d'un objecte de la classe Graf
 
