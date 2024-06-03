@@ -81,7 +81,7 @@ Fixeu-vos: "preview-costa_selva.png" és un nom arbitrari que hem decidit pel ma
 
 Després d'executar aquestes 2 linies de codi en ordre (definir la caixa i fer el preview), podrem veure aquest mapa:
 
-![alt text](preview-costa_selva.png "Mapa de la Box")
+![alt text](tuto1-preview-costa_selva.png "Mapa de la Box")
  
 Bé! Aquest rectangle ens servirà.
 
