@@ -603,6 +603,13 @@ Output esperat d'una altra execució havent acabat l'anterior:
 ```
 
 ### Tests d'errors
+#### La connexió a internet
+Sense connexió a internet, com que el programa necessita accedir a pàgines web, surten errors de connexió i no és possible ni tan sols fer un mapa. Només pots definir una Box si ja coneixes les coordenades. Si l'usuari tracta de executar el codi sense connexió surtirà el següent misatge el terminal:
+```
+ConnectionError: Connection error. Check internet connection and try again. If error persists, the server where the data is gathered from may be offline, try waiting a few hours.
+```
+
+#### Una Box no corresponent
 
 # Autors
 
