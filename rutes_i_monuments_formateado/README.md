@@ -227,7 +227,7 @@ Per exemple, podem buscar un mapa més precís que l'anterior, no simplificat i 
 
 `graf_tossa = make_graph(segments_tossa, n_clusters=300, simplify=False)`
 
-Prèviament a la creació de mapes personalitzats, es defineixen els paràmetres en 2 diccionaris:
+Prèviament a la creació de mapes personalitzats, es defineixen els paràmetres en dos diccionaris:
 
 ```python
 colors: dict[str, str] = {
@@ -248,7 +248,7 @@ sizes: dict[str, int] = {
 }
 ```
 
-Els diccionaris han de complir uns requisits importants: han de tenir aquestes claus (és a dir, no ens podem deixar cap paràmetre per definir, de tots els elements a l'esquerra dels dos punts ":") i els valors han de seguir l'esquema donat: allà on hi ha nombres enters, s'ha de posar nombres enters, i on hi ha text, text (a més a més, el color de les linies del KML s'ha de donar en aquest format, es pot trobar més informació a la documentació de [simplekml](https://simplekml.readthedocs.io/en/latest/constants.html#simplekml.ColorMode)).
+Els diccionaris han de complir uns requisits importants: han de tenir aquestes claus (és a dir, no ens podem deixar cap paràmetre per definir, de tots els elements a l'esquerra dels dos punts ":") i els valors han de seguir l'esquema donat: allà on hi ha nombres enters, s'ha de posar nombres enters, i on hi ha text, text (a més a més, el color de les línies del KML s'ha de donar en aquest format, es pot trobar més informació a la documentació de [simplekml](https://simplekml.readthedocs.io/en/latest/constants.html#simplekml.ColorMode)).
 
 Definits els paràmetres es poden fer servir per generar mapes personalitzats.
 
@@ -264,7 +264,7 @@ Definits els paràmetres es poden fer servir per generar mapes personalitzats.
 
 ![tuto3-kml_rutes_personalitzat_tossa.png](tuto3-kml_rutes_personalitzat_tossa.png "KML de les rutes personalitzat: kml_rutes_personalitzat_tossa.png")
 
-Es poden observar les diferències respecte el mapa anterior de Tossa, fet sense personalitzar. Una curiositat interessant és que executar així el programa, a partir de la generació d'un graf inicial en compte d'usar les funcions quick
+Es poden observar les diferències respecte al mapa anterior de Tossa, fet sense personalitzar. Una curiositat interessant és que executar així el programa, a partir de la generació d'un graf inicial en compte d'usar les funcions quick
 \_paths i quick_routes, ens permet generar rutes que estan al mapa inicial. Es pot apreciar com el mapa de rutes és una part agafada del mapa anterior. Usant les funcions ràpides, generem un graf nou cada cop que serà diferent, ja que l'agrupament de punts presenta aleatorietat (a la pràctica, a nivell d'algorisme ho desconeixem).
 
 A continuació, els dos codis complets d'aquest exemple:
@@ -357,17 +357,17 @@ export_kml("rutes_personalitzat_tossa.kml", routes_tossa, colors, sizes)
 
 ### Execució "exprés"
 
-Si no volem obrir un document, sinó que simplement volem definir ràpidament una àrea i visualitzar el mapa o les rutes, podem fer servir la consola d'una manera molt similar. Escrivint a la linia de comandes `python -i rutes_i_monuments.py`, iniciem l'intèrpret de Python amb totes les funcions incloses.
+Si no volem obrir un document, sinó que simplement volem definir ràpidament una àrea i visualitzar el mapa o les rutes, podem fer servir la consola d'una manera molt similar. Escrivint a la línia de comandes `python -i rutes_i_monuments.py`, iniciem l'intèrpret de Python amb totes les funcions incloses.
 
-D'aquesta manera, podem escriure les comandes una a una sense obrir cap arxiu de Python. Aquest mètode no el recomanem tant com l'altre perquè no es té tanta assistència a l'hora de programar dirèctament al terminal. És més fàcil que ens equivoquem o que ens deixem coses pel camí. Encara així, per fer coses bàsiques, pot anar bé.
+D'aquesta manera, podem escriure les comandes una a una sense obrir cap arxiu de Python. Aquest mètode no el recomanem tant com l'altre perquè no es té tanta assistència a l'hora de programar directament al terminal. És més fàcil que ens equivoquem o que ens deixem coses pel camí. Així i tot, per fer coses bàsiques, pot anar bé.
 
-Si executem les linies del document anterior en ordre, hauríem de tenir la mateixa sortida.
+Si executem les línies del document anterior en ordre, hauríem de tenir la mateixa sortida.
 
 ### Resum de les funcions accessibles i el seu funcionament
 
 #### Funcions bàsiques
 
-Aquests funcions permeten escriure un seguit d'instruccions per descarregar i mapejar les dades. En aquestes, tots els paràmetres que siguin arxius han d'incloure l'extensió corresponent.
+Aquestes funcions permeten escriure un seguit d'instruccions per descarregar i mapejar les dades. En aquestes, tots els paràmetres que siguin arxius han d'incloure l'extensió corresponent.
 
 ```Python
 def get_segments(filename: str, box: Optional[Box] = None, endpage: int = -1, feedback: bool = DEFAULT_FEEDBACK)
@@ -375,7 +375,7 @@ def get_segments(filename: str, box: Optional[Box] = None, endpage: int = -1, fe
 
 Funció per agafar les dades dels segments. filename ha d'incloure l'extensió .dat. Convé establir un valor per endpage només si es pretén fer una prova de les dades i es vol estalviar temps; per tenir precisió és convenient descarregar-les totes. Endpage fa referència a com s'ordenen les dades a la web font.
 
-get_segments protegeix els fitxers .dat de ser sobreescrits. Si estan accessibles, comprovarà que, en cas d'haver donat una caixa com a paràmetre, sigui la caixa que correspon a aquestes dades. En cas contrari, saltarà un error. Si no donem cap caixa, ens retornarà les dades dirèctament. Sempre comprovarà que s'hagin descarregat les dades demanades i descarregarà les que faltin.
+get_segments protegeix els fitxers .dat de ser sobreescrits. Si estan accessibles, comprovarà que, en cas d'haver donat una caixa com a paràmetre, sigui la caixa que correspon a aquestes dades. En cas contrari, saltarà un error. Si no donem cap caixa, ens retornarà les dades directament. Sempre comprovarà que s'hagin descarregat les dades demanades i descarregarà les que faltin.
 
 L'usuari pot saber a quina box pertany un arxiu .dat. S'ha d'accedir a l'arxiu .json amb el mateix nom i llegir el paràmetre "box_str". Aquest conté els dos punts en format longitud - latitud (la coma al mig separa els dos punts, les altres dos comes separen longitud de latitud a cada punt).
 
@@ -429,7 +429,7 @@ Per KML s'ha de col·locar el valor hexadecimal, però no és el format estànda
 def make_graph(segments: Segments, n_clusters: int = DEFAULT_N_CLUSTERS, simplify: bool = True, epsilon: float = DEFAULT_EPSILON) -> Graph:
 ```
 
-Funció per generar un graf a partir d'uns segments. Té tres paràmetres opcionals. Un és el nombre de clusters, "n_clusters" (agupacions) que es faran, per defecte són 100. Reduir el nombre farà el mapa més simple, augmentar-lo el farà més precís, però amb el risc que alguns camins no es mostrin a causa de tenir unes dades inicials poc precises (és millor no elevar masa aquest nombre per no desconnectar el mapa). Succeeix l'invers amb el paràmetre "epsilon", l'angle per simplificar, que és l'angle mínim que es permetrà entre les 2 úniques arestes de qualsevol node amb dos veïns (serveix per eliminar nodes que no siguin necessaris per connectar camins). De fet, podem no simplificar el graf, establint el paràmetre "simplify" com False. Aquest paràmetre no causarà cap problema de desconnectar el mapa.
+Funció per generar un graf a partir d'uns segments. Té tres paràmetres opcionals. Un és el nombre de clusters, "n_clusters" (agupacions) que es faran, per defecte són 100. Reduir el nombre farà el mapa més simple, augmentar-lo el farà més precís, però amb el risc que alguns camins no es mostrin a causa de tenir unes dades inicials poc precises (és millor no elevar massa aquest nombre per no desconnectar el mapa). Succeeix l'invers amb el paràmetre "epsilon", l'angle per simplificar, que és l'angle mínim que es permetrà entre les 2 úniques arestes de qualsevol node amb dos veïns (serveix per eliminar nodes que no siguin necessaris per connectar camins). De fet, podem no simplificar el graf, establint el paràmetre "simplify" com False. Aquest paràmetre no causarà cap problema de desconnectar el mapa.
 
 ```python
 def find_routes(G: Graph, box: Box, start: Point, feedback: bool = DEFAULT_FEEDBACK) -> Graph:
