@@ -216,7 +216,7 @@ def get_segments(
             else:
                 raise SyntaxError(
                     f"File {filename} does not correspond to the box {box_str}, it corresponds to box {file_box_str}. \
-                    The execution has been stoped to avoid a possible mistake in the parameters input. \
+                    The execution has been stopped to avoid a possible mistake in the parameters input. \
                     In order to rewrtie {filename} with new data from a different box, please first delete the file. \
                     If you don't want to overwrite the data, leaving the box parameter empty will get this file's data."
                 )
