@@ -790,6 +790,13 @@ Per a evitar confondre els dos .dat és important que no estiguin anomenats de l
 FileExistsError: Please, do not name any file monuments.dat, as this filename is reserved to monument data gathering. Change filename 
 and try again.
 ```
+#### .json inexistent
+Si s'elimina el .json quan l'usuari intenta executar, el programa no trobarà l'arxiu que necessita i per evitar problemes amb dades incorrectes s'aturarà:
+```
+FileNotFoundError: {filename}.json not found. To avoid having incorrect data, please make sure you have not moved the .json out of the working directory. If you have not removed or modified {filename}.json,
+you can remove {filename}.dat and download the data again using the same 
+filename.
+```
 
 # Autors
 
