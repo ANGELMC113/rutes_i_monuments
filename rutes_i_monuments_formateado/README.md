@@ -141,7 +141,7 @@ Node at 41.71602136079355, 2.831665129455279 contains monuments: ['Santuari de l
 ...
 ```
 
-Aquestes imatges potser no ens agraden del tot i volem canviar els colors de les linies o punts, la seva mida, l'alçada de les linies al KML, la resolució de la imatge, o la precisió del mapa. Per qualsevol d'aquests canvis s'ha de fer servir la "versió extesa" de les funcions, que permeten treballar amb més precisió i els paràmetres desitjats. A continuació s'explica com es fa això, per tenir un millor control de l'execució.
+Aquestes imatges potser no ens agraden del tot i volem canviar els colors de les línies o punts, la seva mida, l'alçada de les línies al KML, la resolució de la imatge, o la precisió del mapa. Per qualsevol d'aquests canvis s'ha de fer servir la "versió es  tesa" de les funcions, que permeten treballar amb més precisió i els paràmetres desitjats. A continuació s'explica com es fa això, per tenir un millor control de l'execució.
 
 Abans, teniu el codi sencer del programa fet fins ara.
 
@@ -191,7 +191,7 @@ Ara, es pot fer servir aquestes dades per fer un mapa amb la "densitat" de quant
 
 ![tuto2-segments-tossa.png](tuto2-segments_tossa.png "Mapa a partir dels segments: segments_tossa.png")
 
-La imatge generada és un mapa amb camins, alguns més gruixuts que altres, que indiquen per on han pasat dispositius que en generat dades GPX. Dit d'una altra manera, és un mapa que mostra les rutes i com "d'importants" són. Pot ser útil visualment però per trobar les rutes als monuments, necessitarem simplificar-lo.
+La imatge generada és un mapa amb camins, alguns més gruixuts que altres, que indiquen per on han passat dispositius que han generat dades GPX. Dit d'una altra manera, és un mapa que mostra les rutes i com "d'importants" són. Pot ser útil visualment, però per trobar les rutes als monuments, necessitarem simplificar-lo.
 
 #### Definició d'un objecte de la classe Graf
 
@@ -207,7 +207,7 @@ Amb aquest podem fer diverses coses, per exemple, mapejar-lo:
 
 Aquest mapa és potser menys natural que l'altre, és a dir, els camins poden no semblar coherents. Hem perdut precisió, però ara podrem buscar els monuments. Les comandes que podríem fer servir serien les següents:
 
-Primer definim un graf on només quedin els camins d'un punt d'inici a cada momument:
+Primer definim un graf on només quedin els camins d'un punt d'inici a cada monument:
 
 `routes_tossa = find_routes(graf_tossa, box_tossa, (Point(41.7202, 2.9335)))`
 
@@ -217,7 +217,7 @@ I llavors el mapejem:
 
 `export_kml("rutes_tossa.kml", routes_tossa)`
 
-Però abans de buscar els monumens podem modificar el mapa per tal d'aconseguir un que ens agradi més.
+Però abans de buscar els monuments podem modificar el mapa per tal d'aconseguir un que ens agradi més.
 
 #### Definició dels paràmetres
 
