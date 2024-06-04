@@ -593,8 +593,16 @@ There is some data missing. Downloading the missing data.
 Page 6 has been sorted and added.
 Page 7 has been sorted and added.
 ...
-!
+Page 115 has been sorted and added.
+Page 116 has been sorted and added.
+test_datafile_delta_1.dat has been saved with the downloaded data.
+Loading segments from file test_datafile_delta_1.dat.
+Done: segments loaded.
+Creating map.
+Rendering map.
+Map has been succesfully saved as map_delta_segments.png.
 ```
+![map_delta_segments.png](test1-map_delta_segments.png "map_delta_segments.png")
 
 Output esperat d'una altra execució havent acabat l'anterior:
 
