@@ -428,7 +428,7 @@ Per KML s'ha de col·locar el valor hexadecimal, però no és el format estànda
 def make_graph(segments: Segments, n_clusters: int = DEFAULT_N_CLUSTERS, simplify: bool = True, epsilon: float = DEFAULT_EPSILON) -> Graph:
 ```
 
-Funció per generar un graf a partir d'uns segments. Té tres paràmetres opcionals. Un és el nombre de clusters, "n_clusters" (agupacions) que es faran, per defecte són 100. Reduir el nombre farà el mapa més simple, augmentar-lo el farà més precís. Succeeix l'invers amb el paràmetre "epsilon", l'angle per simplificar, que és l'angle mínim que es permetrà entre les 2 úniques arestes de qualsevol node amb dos veïns (serveix per eliminar nodes que no siguin necessaris per connectar camins). De fet, podem no simplificar el graf, establint el paràmetre "simplify" com False.
+Funció per generar un graf a partir d'uns segments. Té tres paràmetres opcionals. Un és el nombre de clusters, "n_clusters" (agupacions) que es faran, per defecte són 100. Reduir el nombre farà el mapa més simple, augmentar-lo el farà més precís, però amb el risc que alguns camins no es mostrin a causa de tenir unes dades inicials poc precises (és millor no elevar masa aquest nombre per no desconnectar el mapa). Succeeix l'invers amb el paràmetre "epsilon", l'angle per simplificar, que és l'angle mínim que es permetrà entre les 2 úniques arestes de qualsevol node amb dos veïns (serveix per eliminar nodes que no siguin necessaris per connectar camins). De fet, podem no simplificar el graf, establint el paràmetre "simplify" com False. Aquest paràmetre no causarà cap problema de desconnectar el mapa.
 
 ```python
 def find_routes(G: Graph, box: Box, start: Point, feedback: bool = DEFAULT_FEEDBACK) -> Graph:
@@ -607,8 +607,166 @@ Map has been succesfully saved as map_delta_segments.png.
 Output esperat d'una altra execució havent acabat l'anterior:
 
 ```
-!
+File test_datafile_delta_1.dat found.
+Looking for box with string 0.5739316671,40.5363713,0.9021482,40.79886535
+File data corresponds to this box.
+All data was already gathered.
+Loading segments from file test_datafile_delta_1.dat.
+Done: segments loaded.
+Creating map.
+Rendering map.
+Map has been succesfully saved as map_delta_segments.png.
 ```
+S'ha regenerat la imatge, que s'ha de veure pràcticament igual a cada execució.
+
+```python
+# test-example-clustering.py
+
+from segments import *
+from map_drawing import *
+from clustering import *
+
+# Define a box around Delta de l'Ebre and get the segments
+P1 = Point(40.5363713, 0.5739316671)
+P2 =Point(40.79886535, 0.9021482)
+BOX_EBRE_FLOATS = Box(P1, P2)
+segments = get_segments("test_datafile_delta_1.dat", BOX_EBRE_FLOATS)
+
+# Execute a clustering
+centroid_labels, centroid_coords, edges, new_segments = cluster(segments, 100)
+
+print(centroid_labels)          # an array of numbers (between 0 and 99)
+print(centroid_coords)          # list of (100) points
+print(max(centroid_labels))     # 99
+print(min(centroid_labels))     # 0
+print(len(centroid_coords))     # 100
+
+# Export a map from the clustering
+export_png_map("map_delta_clustered.png", (new_segments, centroid_coords))
+```
+
+Output esperat:
+```
+File test_datafile_delta_1.dat found.
+Looking for box with string 0.5739316671,40.5363713,0.9021482,40.79886535
+File data corresponds to this box.
+All data was already gathered.
+Loading segments from file test_datafile_delta_1.dat.
+Done: segments loaded.
+[11 11 11 ... 21 21 21]
+[Point(lat=40.72379670573755, lon=0.5912383421399496), Point(lat=40.707727496314156, lon=0.7384342619703756),  ..., Point(lat=40.62138539328047, lon=0.5966158684891485), Point(lat=40.72142145744048, lon=0.7392537183333333)]
+99
+0
+100
+Creating map.
+Rendering map.
+Map has been succesfully saved as map_delta_clustered.png.
+```
+![map_delta_clustered.png](test1-map_delta_clustered.png "map_delta_clustered.png")
+A la llista de punts n'hem omès la majoria i hem posat tres punts "...".
+
+Si tornem a executar el programa hauríem de veure un mapa similar, però amb diferències clarament perceptibles, degut al factor aleatori (o almenys per nosaltres desconegut) del l'agrupament. L'array d'enters i la llista de punts també seran diferents a cada execució.
+
+```python
+# test-example-graphmaking.py
+
+from segments import *
+from map_drawing import *
+from graphmaker import *
+
+# Define a box around Delta de l'Ebre and get the segments
+P1 = Point(40.5363713, 0.5739316671)
+P2 =Point(40.79886535, 0.9021482)
+BOX_EBRE_FLOATS = Box(P1, P2)
+segments = get_segments("test_datafile_delta_1.dat", BOX_EBRE_FLOATS)
+
+# Create a graph from the segments
+G = make_graph(segments)
+
+print(G)                # Graph with 100 nodes and 220 edges
+print(G.edges)          # list[tuple[int, int]]
+print(G.nodes.data())   # list[tuple[int, dict['Point': Point]]]
+print(G.edges.data())   # list[tuple[int, int, dict['distance': float]]]
+
+# Export a map from the graph
+export_png_map("map_delta_graf.png", G)
+
+# Export a KML from the graph
+export_kml("map_delta_graf.kml", G)
+```
+
+Output esperat:
+```
+File test_datafile_delta_1.dat found.
+Looking for box with string 0.5739316671,40.5363713,0.9021482,40.79886535
+File data corresponds to this box.
+All data was already gathered.
+Loading segments from file test_datafile_delta_1.dat.
+Done: segments loaded.
+Graph with 88 nodes and 153 edges
+[(91, 39), (91, 22), ..., (88, 71)]
+[(91, {'point': Point(lat=40.71182561984545, lon=0.5794728957012021)}), (39, {'point': Point(lat=40.71848962580888, lon=0.585530803407503)}), ..., (14, {'point': Point(lat=40.67638317555556, lon=0.7243351533333333)})]    
+[(91, 39, {'distance': 0.8998721880410913}), (91, 22, {'distance': 0.9878205568921883}), (91, 63, {'distance': 0.885652689729628}),  ..., (88, 71, {'distance': 2.196071625218686})]
+Creating map.
+Rendering map.
+Map has been succesfully saved as map_delta_graf.png.
+Creating kml.
+KML file has been successfully saved as map_delta_graf.kml.
+```
+![map_delta_graf.png](test1-map_delta_graf.png "map_delta_graf.png")
+![map_delta_graf.kml](test1-map_delta_graf_kml.png "map_delta_graf.kml")
+
+S'ha posat tres punts "..." per ometre elements a la llista d'arestes, a la llista de nodes amb els seus punts i a la llista d'arestes amb les seves distàncies. Els elements del les llistes seran diferents a cada execució. De nou, en tornar a executar, el mapa ha de ser similar.
+
+```python
+# test-example-routes.py
+
+from segments import *
+from map_drawing import *
+from graphmaker import *
+from monuments import Monument
+from routes import _create_tree
+
+# Define a box around Delta de l'Ebre and get the segments
+P1 = Point(40.5363713, 0.5739316671)
+P2 =Point(40.79886535, 0.9021482)
+BOX_EBRE_FLOATS = Box(P1, P2)
+segments = get_segments("test_datafile_delta_1.dat", BOX_EBRE_FLOATS)
+
+# Create a graph from the segments
+G = make_graph(segments)
+
+# Define some monuments
+testing_monuments = [   
+        Monument("Deltebre", "test", Point(40.72082, 0.71721)),
+        Monument("Mirador del Zigurat", "test", Point(40.72304, 0.85995)),
+        Monument("Amposta", "test", Point(40.70718, 0.57895))
+    ]
+
+# Generate the route tree
+start = Point(40.75718, 0.70385)
+T = _create_tree(G, start, testing_monuments)
+
+# Export a map from the tree
+export_png_map("map_delta_routes.png", T)
+```
+
+Output esperat:
+
+```
+File test_datafile_delta_1.dat found.
+Looking for box with string 0.5739316671,40.5363713,0.9021482,40.79886535
+File data corresponds to this box.
+All data was already gathered.
+Loading segments from file test_datafile_delta_1.dat.
+Done: segments loaded.
+Creating map.
+Rendering map.
+Map has been succesfully saved as map_delta_routes.png.
+```
+![map_delta_routes.png](test1-map_delta_routes.png "map_delta_routes.png")
+
+En tornar a executar, hauríem de veure una imatge similar.
 
 ### Tests d'errors
 #### La connexió a internet
