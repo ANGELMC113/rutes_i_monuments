@@ -180,7 +180,6 @@ Començarem descarregant les dades i posant-les en una variable. Per això neces
 
 `preview_box("preview-tossa.png", box_tossa)`
 
-# la liada 1:
 ![tuto2-preview_tossa.png](tuto2-preview_tossa.png "Preview: preview-tossa.png")
 
 Amb la caixa es pot cridar la funció get_segments(), que descarregarà les dades al document del primer paràmetre (que ha de tenir extensió .dat).
@@ -189,7 +188,7 @@ Amb la caixa es pot cridar la funció get_segments(), que descarregarà les dade
 
 Ara, es pot fer servir aquestes dades per fer un mapa amb la "densitat" de quant es transita cada camí:
 `export_png_map("segments_tossa.png", segments_tossa)`
-# la liada 2:
+
 ![tuto2-segments-tossa.png](tuto2-segments-tossa.png "Mapa a partir dels segments: segments_tossa.png")
 
 La imatge generada és un mapa amb camins, alguns més gruixuts que altres, que indiquen per on han pasat dispositius que en generat dades GPX. Dit d'una altra manera, és un mapa que mostra les rutes i com "d'importants" són. Pot ser útil visualment però per trobar les rutes als monuments, necessitarem simplificar-lo.
