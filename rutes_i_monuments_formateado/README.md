@@ -461,35 +461,35 @@ Com de costum, és recomanable tenir un bon nivell d'anglès per programar. A m�
 
 ### Aspectes generals
 
-`feedback: bool` és un paràmetre que trobem al llarg de tot el programa. Sempre fa el mateix, i sempre està per defecte establert a True en el mòdul `generics.py`. Escriu a la consola de comandes uns misatges que donen una idea a l'usuari sobre què està fent el programa. És recomanable deixar el feedback activat, però podem establir `DEFAULT_FEEDBACK` a false i es desactivarà a tot arreu.
+`feedback: bool` és un paràmetre que trobem al llarg de tot el programa. Sempre fa el mateix, i sempre està per defecte establert a True en el mòdul `generics.py`. Escriu a la consola de comandes uns missatges que donen una idea a l'usuari sobre què està fent el programa. És recomanable deixar el feedback activat, però podem establir `DEFAULT_FEEDBACK` a False i es desactivarà a tot arreu.
 
 ### Estructura del programa
 
-El programa consta de 8 mòduls: generics, segments, map_drawing, clustering, graphmaker, monuments, routes i rutes_i_monuments. Tot seguit es resumeix què fa cadascún.
+El programa consta de 8 mòduls: generics, segments, map_drawing, clustering, graphmaker, monuments, routes i rutes_i_monuments. Tot seguit es resumeix què fa cadascun.
 
 #### generics.py
 
 Conté les definicions de Point, Segment, Segments i Box, estableix el valor de DEFAULT_FEEDBACK i dues funcions genèriques, per donar un error si una extensió d'un arxiu és incorrecta i per retornar la distància entre dos objectes de la classe Point.
 
-Box conté una funció que retorna els punts que la defineixen com un string. Aquest string té invertit el format (és longitud - latitud) i serveix per la web des d'on es descarreguen els segments. Aquest mateix string es desa al .json de cada arxiu de segments per identificar-lo. A l'apartat de presa de decisions s'entra en detall respecte això.
+Box conté una funció que retorna els punts que la defineixen com un string. Aquest string té invertit el format (és longitud - latitud) i serveix per la web des d'on es descarreguen els segments. Aquest mateix string es desa al .json de cada arxiu de segments per identificar-lo. A l'apartat de presa de decisions s'entra en detall respecte d'això.
 
 També conté el nom de l'arxiu on es desaran les dades dels monuments.
 
 #### segments.py
 
-Conté les funcions necessàries per descarregar i carregar segments. Els segments es desen a arxius .dat, i cadascún és una linia. Es generen segments de dos punts a partir dels segments descarregats de la web, de múltiples punts, després de filtrar les dades. A l'apartat de presa de decisions s'entra en detall respecte això. La funció get_segments() és la única que necessita l'usuari, ja que s'encarrega de decidir què s'ha de fer i donar un error si és necessari. Protegeix l'arxiu establert a generics.py per desar els monuments.
+Conté les funcions necessàries per descarregar i carregar segments. Els segments es desen a arxius .dat, i cadascun és una línia. Es generen segments de dos punts a partir dels segments descarregats de la web, de múltiples punts, després de filtrar les dades. A l'apartat de presa de decisions s'entra en detall respecte d'això. La funció get_segments() és l'única que necessita l'usuari, ja que s'encarrega de decidir què s'ha de fer i donar un error si és necessari. Protegeix l'arxiu establert a generics.py per desar els monuments.
 
 #### map_drawing.py
 
-Conté les funcions que exporten arxius png i KML de les dades. L'usuari té accés a export_kml() i export_png_map(). Aquesta segona crida una altra funció segons les dades que ha donat l'usuari: graf, segments o tupla de segments i punts. Està pensada per permetre generar mapes diversos i no estar limitada només a grafs, ja que no hi ha problema amb treballar amb segments. L'entrada de punts permet pasar els centroides i comprovar com el graf és igual que el mapa generat a partir de centroides i els segments que els uneixen. Això, en principi, no ho hauria de demanar l'usuari.
+Conté les funcions que exporten arxius png i KML de les dades. L'usuari té accés a export_kml() i export_png_map(). Aquesta segona crida una altra funció segons les dades que ha donat l'usuari: graf, segments o tupla de segments i punts. Està pensada per permetre generar mapes diversos i no estar limitada només a grafs, ja que no hi ha problema amb treballar amb segments. L'entrada de punts permet passar els centroides i comprovar com el graf és igual que el mapa generat a partir de centroides i els segments que els uneixen. Això, en principi, no ho hauria de demanar l'usuari.
 
 #### clustering.py
 
-Llibreria enfocada a graphmaker, conté les funcions que permeten fer l'agrupament de punts. La funció cluster no està pensada per ser usada per l'usuari ja que, a la pràctica, fer el graf és més simple d'entendre, alhora que més útil, i en essència per l'usuari, seran el mateix. Bàsicament, l'usuari ha de fer dirèctament el graf sense demanar res a clustering.
+Llibreria enfocada a graphmaker, conté les funcions que permeten fer l'agrupament de punts. La funció cluster no està pensada per ser usada per l'usuari ja que, a la pràctica, fer el graf és més simple d'entendre, alhora que més útil, i en essència per l'usuari, seran el mateix. Bàsicament, l'usuari ha de fer directament el graf sense demanar res a clustering.
 
 #### graphmaker.py
 
-Conté les funcions que permeten fer el graf inicial a partir dels segments i les constants que s'han col·locat, per defecte, pel nombre de clusters i per l'angle mínim entre les aretes d'un node amb 2 veïns. La funció make_graph() s'encarrega de cridar les altres, segons toqui, per fer-ho tot.
+Conté les funcions que permeten fer el graf inicial a partir dels segments i les constants que s'han col·locat, per defecte, pel nombre de clusters i per l'angle mínim entre les arestes d'un node amb dos veïns. La funció make_graph() s'encarrega de cridar les altres, segons toqui, per fer-ho tot.
 
 #### monuments.py
 
@@ -515,39 +515,39 @@ Aquest arxiu a part té diverses utilitats que ajuden a l'usuari a no perdre el 
 
 En el cas dels segments, desen 3 variables: les coordenades de la Box (en format longitud, latitud), un booleà que indica si s'han acabat de descarregar les dades de OpenStreetMap i un natural que indica la última pàgina descarregada.
 
-En el cas dels monuments, desen el mateix booleà i tres nombres que són els índexos de l'últim monument descarregat.
+En el cas dels monuments, desen el mateix booleà i tres nombres que són els índexs de l'últim monument descarregat.
 
 Aquestes metadades permeten diverses comprovacions. D'una banda, si l'usuari fa un get_segments() (on un paràmetre sempre haurà de ser un arxiu .dat), el programa mai hauria de sobreescriure les dades si aquest arxiu ja existeix. Es poden donar diferents casuístiques segons els paràmetres que passem:
 
 - Donem un "filename" que no existeix i no donem "Box": salta error perquè no es pot saber què volem descarregar.
-- Donem un "filename" que no existeix i sí donem una "Box": el programa genera un nou arxiu .dat, que a partir d'ara serà excliusiu per aquesta Box. Segueix el procés de descarregar i carregar les dades.
+- Donem un "filename" que no existeix i sí que donem una "Box": el programa genera un nou arxiu .dat, que a partir d'ara serà exclusiu per aquesta Box. Segueix el procés de descarregar i carregar les dades.
 - Donem un "filaneme" que ja existeix, i una "Box" que no correspon: salta error perquè aquest "filename" no es correspon a la caixa i no permetem que l'usuari pugui sobreescriure sense voler les dades del .dat.
 - Donem un "filename" que ja existeix i la seva "Box" corresponent (exactament la mateixa): el programa segueix amb la càrrega / descàrrega de les dades de l'arxiu.
 - Donem un "filename" que ja existeix i no donem cap "Box": el programa segueix amb la càrrega / descàrrega de les dades.
 
 D'aquesta manera, no permetem que un arxiu .dat contingui dades de caixes diferents o sigui esborrat pel programa. Si l'usuari vol canviar les dades d'un arxiu .dat, haurà d'esborrar-lo manualment (a través de la terminal o de l'explorador d'arxius).
 
-Tant pels segments com pels monuments la descàrrega / càrrega de dades és automàtica. Sempre es mirarà si el booleà del .json està a True, i si no és així, es cridarà a la funció corresponent, pasant l'índex del primer element que cal descarregar.
+Tant pels segments com pels monuments la descàrrega / càrrega de dades és automàtica. Sempre es mirarà si el booleà del .json està a True, i si no és així, es cridarà a la funció corresponent, passant l'índex del primer element que cal descarregar.
 
-Això permet parar la descarrega i seguir-la després, cosa que fa el programa resistent a situacions on es pugui perdre la connexió a internet. Però, per tal que això funcioni, és important que l'arxiu .dat es vagi escrivint a poc a poc. És per això que els segments es descarreguen pàgina a pàgina i els monuments un per un.
+Això permet parar la descàrrega i seguir-la després, cosa que fa el programa resistent a situacions on es pugui perdre la connexió a internet. Però, per tal que això funcioni, és important que l'arxiu .dat es vagi escrivint a poc a poc. És per això que els segments es descarreguen pàgina a pàgina i els monuments un per un.
 
 Pels segments es fa el següent procés: descarregar la pàgina, ordenar els segments segons temps, eliminar els que tenen "temps negatiu" (més avall s'entra en detalls), apuntar els segments al .dat i, per últim, actualitzar el .json amb el nombre d'aquesta pàgina. És quan no queden elements per descarregar que hem arribat a la última pàgina i per tant, hem acabat i s'estableix el booleà del .json a True.
 
-Pels monuments es descarrega la pàgina de cadascún i es busquen les seves coordenades. Certament, descarregar els monuments així és molt lent, perquè s'ha d'accedir a al voltant de tres mil urls, probablement hi ha mètodes més eficients.
+Pels monuments es descarrega la pàgina de cadascun i es busquen les seves coordenades. Certament, descarregar els monuments així és molt lent, perquè s'ha d'accedir a al voltant de tres mil urls, probablement hi ha mètodes més eficients.
 
-És important destacar que aquesta protecció no es dona amb els altres arxius: els mapes .png i els .kml es sobreescriuen quan demanem fer l'exportació. En conjunt, això permet executar el programa tants cops com volguem, sense haver de descarregar les dades cada cop, i sense generar imatges semblants entre sí.
+És important destacar que aquesta protecció no es dona amb els altres arxius: els mapes .png i els .kml se sobreescriuen quan demanem fer l'exportació. En conjunt, això permet executar el programa tants cops com vulguem, sense haver de descarregar les dades cada cop, i sense generar imatges semblants entre si.
 
 ### Filtre de les dades
 
-Les dades descarregades, en mapejar-les, donen resultats diversos: veiem linies rectes que travessen el rectangle de banda a banda, algunes que uneixen punts molt llunyans, etc. Això, es pot traslladar al graf, cosa que resulta en arestes que es creuen, sense haver-hi cap node, fet que no és coherent a un mapa. En la immensa majoria dels casos la solució és tan senzilla com limitar la longitud dels segments inicials, dels que descarreguem. Al nostre programa es comprova amb haversine() que la distància d'un segment és menor a 50 metres (valor assignat a una constant a segments.py) abans de carregar-lo. És un valor, generalment parlant, arbitrari, però és difícil acotar-lo perquè els segments tenen comportaments impredibles: a vegades són molt petits i es generen en dècimes de segon, i a vegades ocupen kilòmetres. Igualment, perdre un segment amb una longitud de 50 metres normalment no causarà problemes perquè per allà on passi segurament passaren altres segments.
+Les dades descarregades, en mapejar-les, donen resultats diversos: veiem línies rectes que travessen el rectangle de banda a banda, algunes que uneixen punts molt llunyans, etc. Això, es pot traslladar al graf, cosa que resulta en arestes que es creuen, sense haver-hi cap node, fet que no és coherent a un mapa. En la immensa majoria dels casos la solució és tan senzilla com limitar la longitud dels segments inicials, dels que descarreguem. Al nostre programa es comprova amb haversine() que la distància d'un segment és menor a 50 metres (valor assignat a una constant a segments.py) abans de carregar-lo. És un valor, generalment parlant, arbitrari, però és difícil acotar-lo perquè els segments tenen comportaments impredictibles: a vegades són molt petits i es generen en dècimes de segon, i a vegades ocupen kilòmetres. Igualment, perdre un segment amb una longitud de 50 metres normalment no causarà problemes perquè per allà on passi segurament passaren altres segments.
 
-Aquest filtre no suposa una diferència notable en el temps que triga el programa en carregar les dades, perquè el seu cost és lineal, i per això no s'ha mogut a la descàrrega. L'avantatge és que podem canviar la distància màxima sense haver de tornar a descàrregar res.
+Aquest filtre no suposa una diferència notable en el temps que triga el programa en carregar les dades, perquè el seu cost és lineal, i per això no s'ha mogut a la descàrrega. L'avantatge és que podem canviar la distància màxima sense haver de tornar a descarregar res.
 
 A part d'aquest filtre, a l'hora de descarregar s'eliminen els segments on el temps del punt final és anterior al temps del punt inicial (cosa que implica que hi ha algun error).
 
 ## Testing
 
-S'han fet tota una sèrie d'arxius per comprovar les funcionalitats i posar a prova l'aplicació. A continuació s'han seleccionat alguns dels més importants i s'ha donat el seu output esperat. És una selecció reduïda, però la majoria de tests comporoven funcionalitats que van incloses aquí i alguns han quedat obsolets pels canvis fets.
+S'han fet tota una sèrie d'arxius per comprovar les funcionalitats i posar a prova l'aplicació. A continuació s'han seleccionat alguns dels més importants i s'ha donat el seu output esperat. És una selecció reduïda, però la majoria de tests comproven funcionalitats que van incloses aquí i alguns han quedat obsolets pels canvis fets.
 
 ### Tests de funcionalitats
 
@@ -777,14 +777,14 @@ ConnectionError: Connection error. Check internet connection and try again. If e
 ```
 
 #### Una Box no corresponent
-En el cas que l'usuari donés una Box no corresponent al arxiu de les dades, el programa s'aturarà per a evitar un possible error en els paràmetres de sortida. Si el FEEDBACK_DEFAULT està activat, a la terminal sortirà un missatge explicant l'error i com solucionar-lo:
+En el cas que l'usuari donés una Box no corresponent a l'arxiu de les dades, el programa s'aturarà per a evitar un possible error en els paràmetres de sortida. Si el FEEDBACK_DEFAULT està activat, a la terminal sortirà un missatge explicant l'error i com solucionar-lo:
 ```
 SyntaxError: File test_datafile5.dat does not correspond to the box -118.243683,34.052235,-118.243683,34.052235, it corresponds to box 2.7734,41.6578,2.9481,41.7411.
-The execution has been stoped to avoid a possible mistake in the parameters input.
+The execution has been stopped to avoid a possible mistake in the parameters input.
 In order to rewrtie test_datafile5.dat with new data from a different box, please first delete the file.    
 If you don't want to overwrite the data, leaving the box parameter empty will get this file's data.
 ```
-#### Nombrar monuments a un .dat de la Box
+#### Anomenar monuments a un .dat de la Box
 Per a evitar confondre els dos .dat és important que no estiguin anomenats de la mateixa manera. Per això, si l'usuari intenta anomenar monuments a un .dat de la box el programa no el deixarà:
 ```
 FileExistsError: Please, do not name any file monuments.dat, as this filename is reserved to monument data gathering. Change filename 
