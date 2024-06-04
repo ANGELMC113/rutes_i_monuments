@@ -20,17 +20,17 @@ Aquí tindreu accés a tota la informació sobre com fer servir l'aplicació: in
 
 Com a pas previ a qualsevol execució de codi des de la terminal, assegureu-vos que us trobeu al directori del projecte, on es troba aquest arxiu README.md i feu servir la comanda `cd` per arribar-hi (podeu trobar més informació a [Wikipedia](<https://en.wikipedia.org/wiki/Cd_(command)>)).
 
-Com a comentari previ, es demana discreció a l'usuari. És difícil assegurar que els mapes quedaran coherents i no hi haurà camins "impossibles". Això és perquè, en el moment que simplifiquem, sempre modifiquem els camins, i no hi ha manera de saber per on pasaran: per sobre de rius, llacs, propietats privades...
+Com a comentari previ, es demana discreció a l'usuari. És difícil assegurar que els mapes quedaran coherents i no hi haurà camins "impossibles". Això és perquè, en el moment que simplifiquem, sempre modifiquem els camins, i no hi ha manera de saber per on passaran: per sobre de rius, llacs, propietats privades...
 
-L'usuari no ha posar-se en risc ni entrar a propietats privades digui el que digui aquest programa. Els mapes generats només serveixen per aproximar les rutes; també és probable que no siguin del tot precisos.
+L'usuari no ha de posar-se en risc ni entrar a propietats privades digui el que digui aquest programa. Els mapes generats només serveixen per aproximar les rutes; també és probable que no siguin del tot precisos.
 
 ## Instal·lació
 
-És necessari tenir instalades 8 llibreries. Podeu consultar-les a `requirements.txt`.
+És necessari tenir instal·lades 8 llibreries. Podeu consultar-les a `requirements.txt`.
 
 Per instal·lar-les podeu fer servir la comanda `python -m pip install -U -r requirements.txt`, tenint connexió a internet.
 
-Tot i que no és un requeriment per començar a executar certes funcions, és convenient començar a descarregar els monuments tan aviat com sigui possible (en el cas que no es disposi inicialment d'ells). Es recomana executar `monuments.py` i deixar-la en segon pla descarregant els monuments.
+Tot i que no és un requisit per començar a executar certes funcions, és convenient començar a descarregar els monuments tan aviat com sigui possible (en el cas que no es disposi inicialment d'ells). Es recomana executar `monuments.py` i deixar-la en segon pla descarregant els monuments.
 
 ## Execució
 
@@ -38,19 +38,19 @@ Com a requisit principal es necessita connexió a internet per descarregar les d
 
 L'execució del programa es pot fer de diverses formes, n'en destaquem dues. En ambdues es té accés a una sèrie de funcions que permeten descarregar, processar i visualitzar les dades. Tot seguit entrarem en detall.
 
-La forma més recomanable d'executar Rutes i Monuments és obrir un arxiu i escriure un seguit d'instruccions de Python. D'aquesta manera es poden desar les instruccions per tornar-les a executar. si cal, variant alguns paràmetres. Això serà molt útil per refer els mapes fins a aconseguir un que s'adapti a les nostres necessitats: es pot variar la resolució, el color de les linies... Per fer-ho, simplement s'ha d'escriure a una de les primeres linies `from rutes_i_monuments import *`. Ara tindrem accés a totes les funcions d'aquest mòdul.
+La forma més recomanable d'executar Rutes i Monuments és obrir un arxiu i escriure un seguit d'instruccions de Python. D'aquesta manera es poden desar les instruccions per tornar-les a executar. si cal, variant alguns paràmetres. Això serà molt útil per refer els mapes fins a aconseguir un que s'adapti a les nostres necessitats: es pot variar la resolució, el color de les línies... Per fer-ho, simplement s'ha d'escriure a una de les primeres línies `from rutes_i_monuments import *`. Ara tindrem accés a totes les funcions d'aquest mòdul.
 
 Si esteu acostumats a fer servir eines per a programadors, sabreu com veure el "docstring" de les funcions, que us donarà una pista sobre què fan i com s'utilitzen. Però si no és així, tot seguit es descriu tot el que es pot fer amb Rutes i Monuments, i s'ha tractat de fer comprensible per usuaris que no tinguin experiència programant.
 
 Explicarem les funcions al llarg d'un exemple. Trobareu el codi complet al final de d'aquesta explicació.
 
-Com a comentari previ: moltes funcions estan configurades per donar, per defecte, missatges a la consola explicant què està succeïnt. Podem desactivar això al mòdul generics.py posant `DEFAULT_FEEDBACK = False`, tot i que no es recomana.
+Com a comentari previ: moltes funcions estan configurades per donar, per defecte, missatges a la consola explicant què està succeint. Podem desactivar això al mòdul generics.py posant `DEFAULT_FEEDBACK = False`, tot i que no es recomana.
 
 ### Funcions principals de rutes_i_monuments.py i exemple d'ús
 
 #### Definició d'una àrea
 
-Podem definir una àrea rectangular per tractar amb les dades que necessitem. Per fer-ho primer haurem de tenir 2 punts sobre el globus terraqui. Per aconseguir-los un possible mètode és: anar a la web de [OpenStreetMap](https://www.openstreetmap.org/), posar el ratolí a un punt del mapa, fer clic dret i clicar a "Mostrar direcció". A l'esquerra de la pantalla se'ns obrirà una petita finestra amb text i una barra de cerca on hi hauran escrits dos nombres que són les coordenades d'aquest punt, en format latitud, longitud. Ens interessa agafar la cantonada esquerra inferior i la cantonada dreta superior. Amb aquest 2 punts definim una "Box" que serà la nostra zona de treball.
+Podem definir una àrea rectangular per tractar amb les dades que necessitem. Per fer-ho primer haurem de tenir dos punts sobre el globus terraqüi. Per aconseguir-los un possible mètode és: anar a la web de [OpenStreetMap](https://www.openstreetmap.org/), posar el ratolí a un punt del mapa, fer clic dret i clicar a "Mostrar direcció". A l'esquerra de la pantalla se'ns obrirà una petita finestra amb text i una barra de cerca on hi hauran escrits dos nombres que són les coordenades d'aquest punt, en format latitud, longitud. Ens interessa agafar la cantonada esquerra inferior i la cantonada dreta superior. Amb aquests dos punts definim una "Box" que serà la nostra zona de treball.
 
 Per exemple, busquem una àrea al voltant de Blanes, Lloret de Mar i Tossa de Mar.
 
@@ -64,7 +64,7 @@ Fet això, podem definir la nostra "Box".
 
 `box_costa_selva = Box(Point(41.6578, 2.7734), Point(41.7411, 2.9481))`
 
-Podeu donar-li a la caixa el nom que volgueu, en aquest cas hem fet servir "box_costa_selva".
+Podeu donar-li a la caixa el nom que vulgueu, en aquest cas hem fet servir "box_costa_selva".
 
 #### Mapejat de l'àrea
 
@@ -72,11 +72,11 @@ Abans de seguir, podem veure quina és l'àrea què hem definit i quina és la d
 
 Si estem segurs que l'àrea és correcta, aquest pas ens el podem saltar.
 
-A una linia, escrivim: `preview_box("tuto1-preview-costa_selva.png", box_costa_selva)`
+A una línia, escrivim: `preview_box("tuto1-preview-costa_selva.png", box_costa_selva)`
 
 Fixeu-vos: "preview-costa_selva.png" és un nom arbitrari que hem decidit pel mapa que exportarem. Es generarà al directori de treball des d'on executem l'arxiu de Python. L'únic requisit pel nom de l'arxiu és que acabi en ".png", perquè serà una imatge.
 
-Després d'executar aquestes 2 linies de codi en ordre (definir la caixa i fer el preview), podrem veure aquest mapa:
+Després d'executar aquestes dos línies de codi en ordre (definir la caixa i fer el preview), podrem veure aquest mapa:
 
 ![tuto1-preview-costa_selva.png](tuto1-preview-costa_selva.png "Mapa de la Box")
 
