@@ -88,7 +88,7 @@ Una opció que dona el programa és veure una aproximació dels camins per on po
 
 Per això farem servir `quick_paths("costa_selva", "mapa_costa_selva", box_costa_selva)`
 
-El que fem amb aquesta línia és demanar que es generin 3 arxius: un .dat, un .png i un .kml.
+Amb aquesta linia demanem que es generin 3 arxius: un .dat, un .png i un .kml.
 
 - costa_selva.dat contindrà les dades que necessitem per mapejar la zona. Trigarà una estona en descarregar-se, però es guardarà i no haurem de tornar-ho a fer. A més, podem interrompre l'execució i seguir-la més tard i, en principi, no hauria d'haver-hi cap problema.
 - costa_selva.png serà un mapa de les rutes per on ha passat algun usuari generant dades, i que potser serà transitable (hi ha casos on no, perquè les dades poden ser errònies o potser es tracta d'una autopista o carretera no transitable). Tindrà l'aspecte d'un graf.
