@@ -88,15 +88,15 @@ Una opció que dona el programa és veure una aproximació dels camins per on po
 
 Per això farem servir `quick_paths("costa_selva", "mapa_costa_selva", box_costa_selva)`
 
-El que fem amb aquesta linia és demanar que es generin 3 arxius: un .dat, un .png i un .kml.
+El que fem amb aquesta línia és demanar que es generin 3 arxius: un .dat, un .png i un .kml.
 
-- costa_selva.dat contindrà les dades que necessitem per mapejar la zona. Trigarà una estona en descarregar-se, però es guardarà i no haurem de tornar-ho a fer. A més, podem interrompre l'execució i seguir-la més tard i, en principi, no hauria d'haver cap problema.
+- costa_selva.dat contindrà les dades que necessitem per mapejar la zona. Trigarà una estona en descarregar-se, però es guardarà i no haurem de tornar-ho a fer. A més, podem interrompre l'execució i seguir-la més tard i, en principi, no hauria d'haver-hi cap problema.
 - costa_selva.png serà un mapa de les rutes per on ha passat algun usuari generant dades, i que potser serà transitable (hi ha casos on no, perquè les dades poden ser errònies o potser es tracta d'una autopista o carretera no transitable). Tindrà l'aspecte d'un graf.
 - costa_selva.kml serà un arxiu que podrem pujar a Google Earth per visualitzar el mapa del .png en 3D, poder fer zoom i moure'ns lliurement.
 
-ALERTA: si els arxius amb extensió .png i .kml ja existeixen, es sobreescriuran automàticament. El .dat estarà protegit per aquesta box i no s'esborrarà en cap cas, anoser que l'esborreu manualment (o el programa es comporti de forma inesperada). Més avall a aquest README s'entra en detall sobre això.
+ALERTA: si els arxius amb extensió .png i .kml ja existeixen, es sobreescriuran automàticament. El .dat estarà protegit per aquesta box i no s'esborrarà en cap cas, a menys que l'esborreu manualment (o el programa es comporti de forma inesperada). Més avall a aquest README s'entra en detall sobre això.
 
-En executar-se aquesta última linia de codi, i si tot va bé, la terminal ens començarà a indicar que està descarregant dades. Haurem d'esperar uns minuts, temps que depèn de les característiques del nostre ordinador, principalment, però que no variarà massa. Aquest procés es pot interrompre tancant el programa i, en tornar a executar la linia de codi, seguirà descarregant per on es va quedar. Per tant, no cal fer-ho tot d'una, podeu parar el programar i tornar-ho a executar sense problema.
+En executar-se aquesta última línia de codi, i si tot va bé, la terminal ens començarà a indicar que està descarregant dades. Haurem d'esperar uns minuts, temps que depèn de les característiques del nostre ordinador, principalment, però que no variarà massa. Aquest procés es pot interrompre tancant el programa i, en tornar a executar la línia de codi, seguirà descarregant per on es va quedar. Per tant, no cal fer-ho tot d'una, podeu parar el programa i tornar-ho a executar sense problema.
 
 En acabar, veurem 2 arxius nous.
 
@@ -110,7 +110,7 @@ Fet això, es poden buscar les rutes a monuments. Es necessita un punt d'inici, 
 
 `quick_routes("costa_selva", "rutes_costa_selva", box_costa_selva, Point(41.70088, 2.83788))`
 
-És important que el primer nom d'arxiu sigui igual que l'anterior, en el cas d'haver fet servir la comanda per fer el mapa. D'aquesta manera s'aprofiten les dades descarregades, del contrari les descarregaríem de nou. És recomanable que el segon nom d'arxiu sí que canvïi, per tal de no sobreescriure els mapes fets amb l'anterior comanda.
+És important que el primer nom d'arxiu sigui igual que l'anterior, en el cas d'haver fet servir la comanda per fer el mapa. D'aquesta manera s'aprofiten les dades descarregades, del contrari les descarregaríem de nou. És recomanable que el segon nom d'arxiu sí que canviï, per tal de no sobreescriure els mapes fets amb l'anterior comanda.
 
 El resultat és similar, però ara el mapa és reduït, i veiem destacats els monuments a l'arxiu .png.
 
@@ -118,7 +118,7 @@ El resultat és similar, però ara el mapa és reduït, i veiem destacats els mo
 ![tuto1-kml_rutes_costa_selva.png](tuto1-kml_rutes_costa_selva.png "Mapa simplificat: rutes_costa_selva.kml")
 
 
-Amb aquesta comanda també es donen dos llistats a la terminal, dient quins monuments s'han detectat a aqusta zona i on s'ubiquen. S'ha posat una part dels missatges de la terminal (els tres punts indiquen que s'han omès algunes linies).
+Amb aquesta comanda també es donen dos llistats a la terminal, dient quins monuments s'han detectat a aquesta zona i on s'ubiquen. S'ha posat una part dels missatges de la terminal (els tres punts indiquen que s'han omès algunes linies).
 
 ```
 ...
