@@ -13,7 +13,7 @@ MONUMENTS_FILENAME = "monuments.dat"  # Changing this filename can cause problem
 
 DEFAULT_FEEDBACK: bool = True
 """Establish the default feedback for all functionalities which use it.
-Feedback consist on messages being printed on the command prompt when some processes are completed."""
+Feedback consists on messages being printed on the command prompt when some processes are completed."""
 
 
 @dataclass
