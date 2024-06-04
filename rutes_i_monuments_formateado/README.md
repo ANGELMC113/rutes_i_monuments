@@ -56,7 +56,7 @@ Per exemple, busquem una àrea al voltant de Blanes, Lloret de Mar i Tossa de Ma
 
 Cliquem a la cantonada inferior esquerra del que serà el nostre rectangle: veiem que és el punt (41.6578, 2.7734).
 
-![alt text](tuto1-get_coordinates.png "Aconseguim la coordenada")
+![tuto1-get_coordinates.png](tuto1-get_coordinates.png "Aconseguim la coordenada")
 
 Fem el mateix amb la cantonada dreta superior: cliquem i veiem que és el punt (41.7411, 2.9481).
 
@@ -78,7 +78,7 @@ Fixeu-vos: "preview-costa_selva.png" és un nom arbitrari que hem decidit pel ma
 
 Després d'executar aquestes 2 linies de codi en ordre (definir la caixa i fer el preview), podrem veure aquest mapa:
 
-![alt text](tuto1-preview-costa_selva.png "Mapa de la Box")
+![tuto1-preview-costa_selva.png](tuto1-preview-costa_selva.png "Mapa de la Box")
 
 Bé! Aquest rectangle ens servirà.
 
@@ -101,10 +101,10 @@ En executar-se aquesta última linia de codi, i si tot va bé, la terminal ens c
 En acabar, veurem 2 arxius nous.
 
 - El mapa (definit a partir d'un graf i simplificat):
-  ![alt text](tuto1-mapa_costa_selva.png "Mapa simplificat: mapa_costa_selva.png")
+  ![tuto1-mapa_costa_selva.png](tuto1-mapa_costa_selva.png "Mapa simplificat: mapa_costa_selva.png")
 
 - I l'arxiu KML, que podem importar a Google Earth desplegant amb la fletxa el menú lateral (a l'esquerra de la pantalla), fent clic a "nou", "arxiu KML local", "importar" i seleccionant el nostre arxiu d'extensió .kml. Aquí teniu el resultat:
-  ![alt text](tuto1-kml_mapa_costa_selva.png "KML del mapa: mapa_costa_selva.kml")
+  ![tuto1-kml_mapa_costa_selva.png](tuto1-kml_mapa_costa_selva.png "KML del mapa: mapa_costa_selva.kml")
 
 Fet això, es poden buscar les rutes a monuments. Es necessita un punt d'inici, que podem aconseguir igual que com s'aconsegueixen les cantonades de la caixa. Llavors, farem servir la comanda següent:
 
@@ -114,7 +114,7 @@ Fet això, es poden buscar les rutes a monuments. Es necessita un punt d'inici, 
 
 El resultat és similar, però ara el mapa és reduït, i veiem destacats els monuments a l'arxiu .png.
 
-![alt text](tuto1-rutes_costa_selva.png "rutes_costa_selva.png")
+![tuto1-rutes_costa_selva.png](tuto1-rutes_costa_selva.png "rutes_costa_selva.png")
 
 
 Amb aquesta comanda també es donen dos llistats a la terminal, dient quins monuments s'han detectat a aqusta zona i on s'ubiquen. S'ha posat una part dels missatges de la terminal (els tres punts indiquen que s'han omès algunes linies).
@@ -179,7 +179,7 @@ Començarem descarregant les dades i posant-les en una variable. Per això neces
 
 `preview_box("preview-tossa.png", box_tossa)`
 
-![alt text](tuto2-preview-tossa.png "Preview: preview-tossa.png")
+![tuto2-preview-tossa.png](tuto2-preview-tossa.png "Preview: preview-tossa.png")
 
 Amb la caixa es pot cridar la funció get_segments(), que descarregarà les dades al document del primer paràmetre (que ha de tenir extensió .dat).
 
@@ -188,7 +188,7 @@ Amb la caixa es pot cridar la funció get_segments(), que descarregarà les dade
 Ara, es pot fer servir aquestes dades per fer un mapa amb la "densitat" de quant es transita cada camí:
 `export_png_map("segments_tossa.png", segments_tossa)`
 
-![alt text](tuto2-segments_tossa.png "Mapa a partir dels segments: segments_tossa.png")
+![tuto2-segments_tossa.png](tuto2-segments_tossa.png "Mapa a partir dels segments: segments_tossa.png")
 
 La imatge generada és un mapa amb camins, alguns més gruixuts que altres, que indiquen per on han pasat dispositius que en generat dades GPX. Dit d'una altra manera, és un mapa que mostra les rutes i com "d'importants" són. Pot ser útil visualment però per trobar les rutes als monuments, necessitarem simplificar-lo.
 
@@ -202,7 +202,7 @@ Amb aquest podem fer diverses coses, per exemple, mapejar-lo:
 
 `export_png_map("graf_tossa.png", graf_tossa)`
 
-![alt text](tuto2-graf_tossa.png "Mapa a partir del graf: graf_tossa.png")
+![tuto2-graf_tossa.png](tuto2-graf_tossa.png "Mapa a partir del graf: graf_tossa.png")
 
 Aquest mapa és potser menys natural que l'altre, és a dir, els camins poden no semblar coherents. Hem perdut precisió, però ara podrem buscar els monuments. Les comandes que podríem fer servir serien les següents:
 
@@ -253,15 +253,15 @@ Definits els paràmetres es poden fer servir per generar mapes personalitzats.
 
 `export_png_map("graf_personalitzat_tossa.png", graf_tossa, colors, sizes)`
 
-![alt text](tuto3-graf_personalitzat_tossa.png "Mapa personalitzat: graf_personalitzat_tossa.png")
+![tuto3-graf_personalitzat_tossa.png](tuto3-graf_personalitzat_tossa.png "Mapa personalitzat: graf_personalitzat_tossa.png")
 
 `export_png_map("rutes_personalitzat_tossa.png", routes_tossa, colors, sizes)`
 
-![alt text](tuto3-rutes_personalitzat_tossa.png "Mapa de les rutes personalitzat: rutes_personalitzat_tossa.png")
+![tuto3-rutes_personalitzat_tossa.png](tuto3-rutes_personalitzat_tossa.png "Mapa de les rutes personalitzat: rutes_personalitzat_tossa.png")
 
 `export_kml("rutes_personalitzat_tossa.kml", routes_tossa, colors, sizes)`
 
-![alt text](tuto3-kml_rutes_personalitzat_tossa.png "KML de les rutes personalitzat: kml_rutes_personalitzat_tossa.png")
+![tuto3-kml_rutes_personalitzat_tossa.png](tuto3-kml_rutes_personalitzat_tossa.png "KML de les rutes personalitzat: kml_rutes_personalitzat_tossa.png")
 
 Es poden observar les diferències respecte el mapa anterior de Tossa, fet sense personalitzar. Una curiositat interessant és que executar així el programa, a partir de la generació d'un graf inicial en compte d'usar les funcions quick
 \_paths i quick_routes, ens permet generar rutes que estan al mapa inicial. Es pot apreciar com el mapa de rutes és una part agafada del mapa anterior. Usant les funcions ràpides, generem un graf nou cada cop que serà diferent, ja que l'agrupament de punts presenta aleatorietat (a la pràctica, a nivell d'algorisme ho desconeixem).
