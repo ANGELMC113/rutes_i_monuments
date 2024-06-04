@@ -189,7 +189,7 @@ Amb la caixa es pot cridar la funció get_segments(), que descarregarà les dade
 Ara, es pot fer servir aquestes dades per fer un mapa amb la "densitat" de quant es transita cada camí:
 `export_png_map("segments_tossa.png", segments_tossa)`
 
-![tuto2-segments-tossa.png](tuto2-segments-tossa.png "Mapa a partir dels segments: segments_tossa.png")
+![tuto2-segments-tossa.png](tuto2-segments_tossa.png "Mapa a partir dels segments: segments_tossa.png")
 
 La imatge generada és un mapa amb camins, alguns més gruixuts que altres, que indiquen per on han pasat dispositius que en generat dades GPX. Dit d'una altra manera, és un mapa que mostra les rutes i com "d'importants" són. Pot ser útil visualment però per trobar les rutes als monuments, necessitarem simplificar-lo.
 
@@ -203,6 +203,7 @@ Amb aquest podem fer diverses coses, per exemple, mapejar-lo:
 
 `export_png_map("graf_tossa.png", graf_tossa)`
 
+![tuto2-graf_tossa.png](tuto2-graf_tossa.png "Mapa a partir del graf: graf_tossa.png")
 
 Aquest mapa és potser menys natural que l'altre, és a dir, els camins poden no semblar coherents. Hem perdut precisió, però ara podrem buscar els monuments. Les comandes que podríem fer servir serien les següents:
 
