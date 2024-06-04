@@ -36,7 +36,7 @@ Tot i que no és un requisit per començar a executar certes funcions, és conve
 
 Com a requisit principal es necessita connexió a internet per descarregar les dades i fer mapes (és a dir, les funcions més importants).
 
-L'execució del programa es pot fer de diverses formes, n'en destaquem dues. En ambdues es té accés a una sèrie de funcions que permeten descarregar, processar i visualitzar les dades. Tot seguit entrarem en detall.
+L'execució del programa es pot fer de diverses formes, en destaquem dues. En ambdues es té accés a una sèrie de funcions que permeten descarregar, processar i visualitzar les dades. Tot seguit entrarem en detall.
 
 La forma més recomanable d'executar Rutes i Monuments és obrir un arxiu i escriure un seguit d'instruccions de Python. D'aquesta manera es poden desar les instruccions per tornar-les a executar. si cal, variant alguns paràmetres. Això serà molt útil per refer els mapes fins a aconseguir un que s'adapti a les nostres necessitats: es pot variar la resolució, el color de les línies... Per fer-ho, simplement s'ha d'escriure a una de les primeres línies `from rutes_i_monuments import *`. Ara tindrem accés a totes les funcions d'aquest mòdul.
 
