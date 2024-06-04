@@ -770,18 +770,24 @@ En tornar a executar, hauríem de veure una imatge similar.
 
 ### Tests d'errors
 #### La connexió a internet
-Sense connexió a internet, com que el programa necessita accedir a pàgines web, surten errors de connexió i no és possible ni tan sols fer un mapa. Només pots definir un Box si ja coneixes les coordenades. Si l'usuari tracta d'executar el codi sense connexió sortirà el següent missatge el terminal:
+Sense connexió a internet, com que el programa necessita accedir a pàgines web, surten errors de connexió i no és possible ni tan sols fer un mapa. Només pots definir un Box si ja coneixes les coordenades. Si l'usuari tracta d'executar el codi sense connexió sortirà el següent missatge al terminal:
 ```
 ConnectionError: Connection error. Check internet connection and try again. If error persists, the server where the data is gathered from may be offline, try waiting a few hours.
 ```
 
 #### Una Box no corresponent
-En el cas que l'usuari don una Box no corresponent al archiu de les dades, el programa s'aturarà per a evitar un possible error en els paràmetres de sortida. Si el FEEDBACK_DEFAULT està activat, a la terminal sortirà un misstage explicant l'error i com solucionar-lo:
+En el cas que l'usuari donés una Box no corresponent al arxiu de les dades, el programa s'aturarà per a evitar un possible error en els paràmetres de sortida. Si el FEEDBACK_DEFAULT està activat, a la terminal sortirà un missatge explicant l'error i com solucionar-lo:
 ```
 SyntaxError: File test_datafile5.dat does not correspond to the box -118.243683,34.052235,-118.243683,34.052235, it corresponds to box 2.7734,41.6578,2.9481,41.7411.
 The execution has been stoped to avoid a possible mistake in the parameters input.
 In order to rewrtie test_datafile5.dat with new data from a different box, please first delete the file.    
 If you don't want to overwrite the data, leaving the box parameter empty will get this file's data.
+```
+#### Nombrar monuments a un .dat de la Box
+Per a evitar confondre els dos .dat és important que no estiguin anomenats de la mateixa manera. Per això, si l'usuari intenta anomenar monuments a un .dat de la box el programa no el deixarà:
+```
+FileExistsError: Please, do not name any file monuments.dat, as this filename is reserved to monument data gathering. Change filename 
+and try again.
 ```
 
 # Autors
