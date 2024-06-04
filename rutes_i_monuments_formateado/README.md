@@ -114,6 +114,7 @@ Fet això, es poden buscar les rutes a monuments. Es necessita un punt d'inici, 
 
 El resultat és similar, però ara el mapa és reduït, i veiem destacats els monuments a l'arxiu .png.
 
+![tuto2-graf_tossa.png](tuto2-graf_tossa.png "Mapa a partir del graf: graf_tossa.png")
 ![tuto1-rutes_costa_selva.png](tuto1-rutes_costa_selva.png "rutes_costa_selva.png")
 
 
@@ -202,7 +203,6 @@ Amb aquest podem fer diverses coses, per exemple, mapejar-lo:
 
 `export_png_map("graf_tossa.png", graf_tossa)`
 
-![tuto2-graf_tossa.png](tuto2-graf_tossa.png "Mapa a partir del graf: graf_tossa.png")
 
 Aquest mapa és potser menys natural que l'altre, és a dir, els camins poden no semblar coherents. Hem perdut precisió, però ara podrem buscar els monuments. Les comandes que podríem fer servir serien les següents:
 
