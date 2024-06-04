@@ -115,7 +115,7 @@ Fet això, es poden buscar les rutes a monuments. Es necessita un punt d'inici, 
 El resultat és similar, però ara el mapa és reduït, i veiem destacats els monuments a l'arxiu .png.
 
 ![alt text](tuto1-rutes_costa_selva.png "Mapa simplificat: rutes_costa_selva.png")
-![alt text](tuto1-kml_rutes_costa_selva.png "Mapa simplificat: rutes_costa_selva.kml")
+
 
 Amb aquesta comanda també es donen dos llistats a la terminal, dient quins monuments s'han detectat a aqusta zona i on s'ubiquen. S'ha posat una part dels missatges de la terminal (els tres punts indiquen que s'han omès algunes linies).
 
