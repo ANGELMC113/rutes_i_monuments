@@ -2,7 +2,7 @@
 
 Aquest programa permet visualitzar sobre un mapa les rutes de cotxes i senderistes i les posicions de monuments històrics d'interès. Ho fa mitjançant algorismes de grafs i de *clustering*, i a partir de dades accessibles públicament.
 
-És una solució a un problema proposat a l'assignatura d'Algorísmia i Programació II (AP2) del Grau en Ciència i Enginyeria de Dades (GCED) de la Universitat Politècnica de Catalunya (UPC).
+És una solució a un problema proposat a l'assignatura d'Algorísmia i Programació II (AP2) del Grau en Ciència i Enginyeria de Dades (GCED) de la Universitat Politècnica de Catalunya (UPC). Podeu veure el [repositori del professorat](https://github.com/jordi-petit/ap2-rutes-i-monuments-2024).
 
 Específicament, el programa permet:
 - Obtenir les rutes dels senderistes en una regió geogràfica
