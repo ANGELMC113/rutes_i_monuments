@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="1">
+        <Style id="4">
+            <LineStyle id="5">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="8">
+            <LineStyle id="9">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="12">
+            <LineStyle id="13">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="16">
+            <LineStyle id="17">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="20">
+            <LineStyle id="21">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="24">
+            <LineStyle id="25">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="28">
+            <LineStyle id="29">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Style id="32">
+            <LineStyle id="33">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>5</width>
+            </LineStyle>
+        </Style>
+        <Placemark id="3">
+            <styleUrl>#4</styleUrl>
+            <LineString id="2">
+                <altitudeMode>relativeToGround</altitudeMode>
+                <coordinates>2.9336290415929205,41.72012385610619,15 2.931982703816794,41.72004278854962,15</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="7">
+            <styleUrl>#8</styleUrl>
+            <LineString id="6">
+                <altitudeMode>relativeToGround</altitudeMode>
+                <coordinates>2.9336290415929205,41.72012385610619,15 2.932965935714286,41.719190829,15</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="11">
+            <styleUrl>#12</styleUrl>
+            <LineString id="10">
+                <altitudeMode>relativeToGround</altitudeMode>
+                <coordinates>2.931982703816794,41.72004278854962,15 2.930472796103896,41.72037256493506,15</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="15">
+            <styleUrl>#16</styleUrl>
+            <LineString id="14">
+                <altitudeMode>relativeToGround</altitudeMode>
+                <coordinates>2.930472796103896,41.72037256493506,15 2.9285693704457363,41.721142300290694,15</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="19">
+            <styleUrl>#20</styleUrl>
+            <LineString id="18">
+                <altitudeMode>relativeToGround</altitudeMode>
+                <coordinates>2.932965935714286,41.719190829,15 2.9326273693679092,41.71832797990275,15</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="23">
+            <styleUrl>#24</styleUrl>
+            <LineString id="22">
+                <altitudeMode>relativeToGround</altitudeMode>
+                <coordinates>2.9326273693679092,41.71832797990275,15 2.9327270114574557,41.71746826251053,15</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="27">
+            <styleUrl>#28</styleUrl>
+            <LineString id="26">
+                <altitudeMode>relativeToGround</altitudeMode>
+                <coordinates>2.9285693704457363,41.721142300290694,15 2.926904487692308,41.72036881230769,15</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="31">
+            <styleUrl>#32</styleUrl>
+            <LineString id="30">
+                <altitudeMode>relativeToGround</altitudeMode>
+                <coordinates>2.9327270114574557,41.71746826251053,15 2.934367283333333,41.71723779351852,15</coordinates>
+            </LineString>
+        </Placemark>
+    </Document>
+</kml>

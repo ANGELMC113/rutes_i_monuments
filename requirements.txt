@@ -1,0 +1,9 @@
+beautifulsoup4
+gpxpy
+haversine
+networkx
+Pillow
+requests
+scikit-learn
+simplekml
+staticmap

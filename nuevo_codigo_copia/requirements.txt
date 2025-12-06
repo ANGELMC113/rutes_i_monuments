@@ -1,8 +1,0 @@
-requests
-gpxpy
-beautifulsoup4
-simplekml
-networkx
-scikit-learn
-haversine
-staticmap
